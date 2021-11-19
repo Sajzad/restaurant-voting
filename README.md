@@ -33,9 +33,11 @@ REST APIs for voting restaurant menus and To find out Menu of the day.
 **.Environent Variable **
 ```
     SECRET_KEY=foo
+```
     
 ## API Features
 
+```
 1. Authentication
 2. Creating restaurant
 3. Uploading menu for restaurant (There should be a menu for each day)
@@ -44,10 +46,11 @@ REST APIs for voting restaurant menus and To find out Menu of the day.
 6. Voting for restaurant menu
 7. Getting results for the current day. The winner restaurant should not be the winner for 3 consecutive working days
 8. Logout
-
+```
 
 ### Dependencies Used
 
+```
 asgiref==3.4.1
 Django==3.2.9
 django-cors-headers==3.10.0
@@ -61,15 +64,17 @@ pytz==2021.3
 sqlparse==0.4.2
 typing_extensions==4.0.0
 zipp==3.6.0
-
+```
 
 ## API Endpoints
 
 Few endpoints require a token for authentication.
 
+```
     `{'Authorization': 'Bearer': <token>}`
+ ```
 
-
+```
 | EndPoint                                        |                       Functionality |
 | ------------------------------------------------|-----------------------------------: |
 | POST /api/register-user/                        |                Register a user      |
@@ -81,7 +86,7 @@ Few endpoints require a token for authentication.
 | GET /api/vote/:id/                              |                       Vote menu     |
 | GET /api/results/                               |         Show results of today     |
 
-
+```
 ## Responses
 
 The API responds with JSON data by default.
