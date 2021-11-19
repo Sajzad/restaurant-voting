@@ -1,4 +1,4 @@
-# Restaurant Menu Voting API
+# Restaurant Menu Voting APIs
 
 REST APIs for voting restaurant menus and To find out Menu of the day.
 
