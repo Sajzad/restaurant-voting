@@ -1,0 +1,5 @@
+"username": "sajzad123",
+"email":"saj@gmail.com",
+"first_name":"sajjad",
+"last_name": "Hasan",
+"phone": "5454564654",
