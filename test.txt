@@ -2,4 +2,7 @@
 "email":"saj@gmail.com",
 "first_name":"sajjad",
 "last_name": "Hasan",
-"phone": "5454564654",
+"phone": "5454564654"
+
+
+export SECRET_KEY='django-insecure-rfouvhn5xh#=1qeq#o*2gtjhelzu-2znggt22i#sif)sm&whu+'

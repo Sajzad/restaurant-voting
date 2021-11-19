@@ -1,16 +1,11 @@
 from datetime import datetime
 from datetime import date, timedelta
-import logging
 
 from django.conf import settings
 from django.template import loader
 from django.utils.html import strip_tags
 from django.contrib.auth.hashers import check_password
 from django.db.models import Q
-from django.db.models import Sum, Max
-from django.db import connection
-from django.db.models import F, Window
-from django.db.models.functions import Rank
 from django.shortcuts import get_object_or_404
 
 from rest_framework import permissions
@@ -20,7 +15,6 @@ from rest_framework import status
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
-# from .tasks import *
 from api.models import *
 from api.serializers import *
 
@@ -34,9 +28,7 @@ class RegisterUserAPIView(APIView):
 
     def post(self, request, format=None):
         req = request.data
-
         serializer = UserSerializer(data=req)
-
         if serializer.is_valid():
             try:
                 new_user = User.objects.create(
@@ -85,14 +77,10 @@ class LoginAPIView(APIView):
 
     def post(self, request, format=None):
         try:
-            user = User.objects.get(username=request.data["username"])
-
             if check_password(request.data["password"], user.password):
                 payload = jwt_payload_handler(user)
 
                 token = jwt_encode_handler(payload)
-
-                user.save()
 
                 fullname = user.first_name + " " + user.last_name
                 res = {
@@ -196,7 +184,6 @@ class UploadMenuAPIView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request):
-
         try:
             req = request.data
             todays_date = date.today()
@@ -235,7 +222,17 @@ class UploadMenuAPIView(APIView):
             res = {"msg": str(e), "success": False, "data": None}
             return Response(data=res, status=status.HTTP_400_BAD_REQUEST)
 
-class RestaurantListAPIView(generics.ListAPIView):
+class TodayMenuList(APIView):
+
+    def get(self, request):
+
+        menu_qs = Menu.objects.filter(Q(created_at__date=date.today()))
+        serializer = MenuListSerializer(menu_qs, many=True)
+        res = {"msg": 'success', "data": serializer.data, "success": True}
+        return Response(data=res, status=status.HTTP_200_OK)
+
+
+class RestaurantList(generics.ListAPIView):
     serializer_class = RestaurantListSerializer
     queryset = Restaurant.objects.all()
 
