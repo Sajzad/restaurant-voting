@@ -78,13 +78,13 @@ Few endpoints require a token for authentication.
 | EndPoint                                        |                       Functionality |
 | ------------------------------------------------|-----------------------------------: |
 | POST /api/register-user/                        |                Register a user      |
-| POST /api/create-employee/                      |         Create a new employee      |
+| POST /api/create-employee/                      |         Create a new employee       |
 | POST /api/login/                                |                     User login      |
 | GET /api/logout/                                |                    User Logout      |
-| GET /api/restaurants/                           |            List of all restaurants     |
+| GET /api/restaurants/                           |            List of all restaurants  |
 | GET /api/menu-list/                             |      List of all menus of today     |
 | GET /api/vote/:id/                              |                       Vote menu     |
-| GET /api/results/                               |         Show results of today     |
+| GET /api/results/                               |         Show results of today       |
 
 ```
 ## Responses
